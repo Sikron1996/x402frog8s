@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         network: "base",
         chainId: 8453,
         maxAmountRequired: "3000000",
-        resource: "https://x402-website.vercel.app/api/mint",
+        resource: "https://x402frog8s-one.vercel.app/api/mint",
         description: "Mint 1 x402Cats NFT (Gasless via PayAI)",
         mimeType: "application/json",
         payTo: "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
