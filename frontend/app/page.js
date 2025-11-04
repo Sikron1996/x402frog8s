@@ -1,6 +1,6 @@
 
 "use client";
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://x402frog8s.vercel.app";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://x402frog8s-one.vercel.app";
 async function call(path){const r=await fetch(`${API_BASE}${path}`);alert(`Status: ${r.status}\n${await r.text()}`)}
 export default function Page(){
 return(<main style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',minHeight:'100vh',gap:'16px'}}>
