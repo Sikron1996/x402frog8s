@@ -1,7 +1,7 @@
 
 export function buildX402Response() {
   const receiver = process.env.B402_RECEIVER || '0x0000000000000000000000000000000000000000';
-  const base = process.env.PUBLIC_BASE_URL || 'https://x402frog8s-one.vercel.app/';
+  const base = process.env.PUBLIC_BASE_URL || 'https://x402frog8s-one.vercel.app';
   return {
     x402Version: 1,
     payer: "base",
