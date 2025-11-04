@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "backend/src/index.js", "use": "@vercel/node" },
+    { "src": "frontend/next.config.mjs", "use": "@vercel/next" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/backend/src/index.js" },
+    { "src": "/(.*)", "dest": "/frontend/$1" }
+  ],
+  "env": {
+    "PORT": "4020",
+    "B402_RECEIVER": "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
+    "FACILITATOR_URL": "https://facilitator.payai.network/",
+    "PUBLIC_BASE_URL": "https://x402frog8s.vercel.app",
+    "NEXT_PUBLIC_API_BASE": "https://x402frog8s.vercel.app"
+  }
+}

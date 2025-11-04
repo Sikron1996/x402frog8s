@@ -1,0 +1,1 @@
+# x402frog8s full project\nFrontend + Backend ready for Vercel.
