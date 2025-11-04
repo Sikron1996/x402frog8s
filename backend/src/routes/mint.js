@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         resource: "https://x402-website.vercel.app/api/mint",
         description: "Mint 1 x402Cats NFT (Gasless via PayAI)",
         mimeType: "application/json",
-        payTo: "0x86F81966e14dA17193CC3F3d6903184730F36681",
+        payTo: "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
         maxTimeoutSeconds: 300,
         asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
         facilitator: "https://facilitator.payai.network",
