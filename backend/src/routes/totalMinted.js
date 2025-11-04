@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       scheme: "exact",
       network: "base",
       maxAmountRequired: "10000",
-      resource: base + "/api/totalMinted",
+      resource: "https://x402frog8s-one.vercel.app/api/totalMinted",
       description: "x402frog8s total minted",
       mimeType: "application/json",
       payTo: receiver,
