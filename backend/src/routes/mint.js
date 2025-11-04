@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       scheme: "exact",
       network: "base",
       maxAmountRequired: "3000000",
-      resource: base + "/api/mint",
+      resource: "https://x402frog8s-one.vercel.app/api/mint",
       description: "Mint 1 x402frog8s Punk",
       mimeType: "application/json",
       payTo: receiver,
