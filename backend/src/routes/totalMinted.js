@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 router.get('/', (req, res) => {
   const receiver = process.env.B402_RECEIVER || '0x0000000000000000000000000000000000000000';
-  const base = process.env.PUBLIC_BASE_URL || 'https://x402frog8s.vercel.app';
+  const base = process.env.PUBLIC_BASE_URL || 'https://x402frog8s-one.vercel.app';
   res.status(402).json({
     x402Version: 1,
     payer: "base",
