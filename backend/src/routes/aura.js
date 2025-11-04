@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       scheme: "exact",
       network: "base",
       maxAmountRequired: "3000000",
-      resource: base + "/api/aura",
+      resource: "https://x402frog8s-one.vercel.app/api/aura",
       description: "Mint 1 x402frog8s Aura",
       mimeType: "application/json",
       payTo: receiver,
