@@ -1,9 +1,13 @@
+
 {
-  "name": "frog8s-backend",
+  "name": "x402frog8s-backend",
   "version": "1.0.0",
+  "description": "x402frog8s API (Base + USDC + PayAI) with valid x402 schema",
   "main": "src/index.js",
   "type": "module",
-  "scripts": { "start": "node src/index.js" },
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
