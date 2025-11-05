@@ -1,9 +1,9 @@
+export default function handler(req, res) {
+  const base = "https://x402frog8s-one.vercel.app"; // 🔗 твій домен
+  const receiver = "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA"; // 💎 твій гаманець
+  const facilitator = "https://facilitator.payai.network/"; // 🧠 офіційний PayAI фасилітатор
 
-export function buildDiscovery() {
-  const base = process.env.PUBLIC_BASE_URL || 'https://x402frog8s-one.vercel.app';
-  const receiver = process.env.B402_RECEIVER || '0x0000000000000000000000000000000000000000';
-
-  return {
+  const body = {
     x402Version: 1,
     payer: "base",
     accepts: [
@@ -17,6 +17,7 @@ export function buildDiscovery() {
         payTo: receiver,
         maxTimeoutSeconds: 300,
         asset: "USDC",
+        facilitator, // ✅ обов’язковий ключ для PayAI
         outputSchema: {
           input: {
             type: "object",
@@ -44,7 +45,8 @@ export function buildDiscovery() {
         mimeType: "application/json",
         payTo: receiver,
         maxTimeoutSeconds: 300,
-        asset: "USDC"
+        asset: "USDC",
+        facilitator
       },
       {
         scheme: "exact",
@@ -55,8 +57,11 @@ export function buildDiscovery() {
         mimeType: "application/json",
         payTo: receiver,
         maxTimeoutSeconds: 300,
-        asset: "USDC"
+        asset: "USDC",
+        facilitator
       }
     ]
   };
+
+  res.status(402).json(body);
 }
