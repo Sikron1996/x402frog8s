@@ -1,68 +1,60 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://frog8s.vercel.app";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://x402frog8s-one.vercel.app";
 
 export default function Page() {
+  const [sdkReady, setSdkReady] = useState(false);
+
+  // Завантаження SDK PayAI після рендеру
   useEffect(() => {
-    const s = document.createElement("script");
-    s.src = "https://facilitator.payai.network/sdk.js";
-    s.async = true;
-    document.body.appendChild(s);
+    const script = document.createElement("script");
+    script.src = "https://facilitator.payai.network/sdk.js";
+    script.async = true;
+    script.onload = () => setSdkReady(true);
+    document.body.appendChild(script);
   }, []);
 
-  async function payMint() {
-    if (!window.PayAI) return alert("PayAI SDK not loaded yet");
-    await window.PayAI.pay({
-      network: "base",
-      asset: "USDC",
-      amount: "3",
-      payTo: "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
-      resource: API_BASE + "/api/mint"
-    });
-  }
+  async function call(path) {
+    const resp = await fetch(`${API_BASE}${path}`);
+    if (resp.status === 402) {
+      const data = await resp.json();
 
-  async function payAura() {
-    if (!window.PayAI) return alert("PayAI SDK not loaded yet");
-    await window.PayAI.pay({
-      network: "base",
-      asset: "USDC",
-      amount: "3",
-      payTo: "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
-      resource: API_BASE + "/api/aura"
-    });
-  }
+      if (!sdkReady || typeof window.x402 === "undefined") {
+        alert("⚠️ PayAI SDK not loaded yet — зачекай 2 секунди і спробуй ще раз");
+        return;
+      }
 
-  async function payTotal() {
-    if (!window.PayAI) return alert("PayAI SDK not loaded yet");
-    await window.PayAI.pay({
-      network: "base",
-      asset: "USDC",
-      amount: "0.01",
-      payTo: "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
-      resource: API_BASE + "/api/totalMinted"
-    });
+      try {
+        const payResult = await window.x402.pay(data);
+        alert("✅ Оплата завершена!\\n" + JSON.stringify(payResult, null, 2));
+      } catch (err) {
+        alert("❌ Помилка оплати:\\n" + err.message);
+      }
+    } else {
+      alert("Status: " + resp.status + "\\n" + (await resp.text()));
+    }
   }
 
   return (
-    <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", gap: "16px", alignItems: "center", justifyContent: "center" }}>
+    <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#000', color: '#fff', gap: '16px' }}>
       <h1>frog8s</h1>
       <p>Base • USDC • PayAI</p>
-      <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-        <button onClick={payMint} style={btn}>Mint frog8s (3 USDC)</button>
-        <button onClick={payAura} style={btn}>Mint Aura (3 USDC)</button>
-        <button onClick={payTotal} style={btn}>Total Minted (0.01 USDC)</button>
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <button onClick={() => call('/api/mint')} style={btn}>Mint frog8s (3 USDC)</button>
+        <button onClick={() => call('/api/aura')} style={btn}>Mint Aura (3 USDC)</button>
+        <button onClick={() => call('/api/totalMinted')} style={btn}>Total Minted (0.01 USDC)</button>
       </div>
     </main>
   );
 }
 
 const btn = {
-  background: "#fff",
-  color: "#000",
-  border: "none",
-  padding: "12px 16px",
-  borderRadius: "8px",
-  cursor: "pointer"
+  background: '#222',
+  color: '#fff',
+  border: '1px solid #555',
+  padding: '12px 16px',
+  borderRadius: '8px',
+  cursor: 'pointer'
 };
