@@ -12,7 +12,7 @@
     "PORT": "4020",
     "B402_RECEIVER": "0xF97a410f2f0b64Cb5820baD63d878c3A967235AA",
     "FACILITATOR_URL": "https://facilitator.payai.network/",
-    "PUBLIC_BASE_URL": "https://x402frog8s.vercel.app",
-    "NEXT_PUBLIC_API_BASE": "https://x402frog8s.vercel.app"
+    "PUBLIC_BASE_URL": "https://frog8s.vercel.app",
+    "NEXT_PUBLIC_API_BASE": "https://frog8s.vercel.app"
   }
 }

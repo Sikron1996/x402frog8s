@@ -1,6 +1,5 @@
-
 {
-  "name": "x402frog8s-backend",
+  "name": "frog8s-backend",
   "version": "1.0.0",
   "main": "src/index.js",
   "type": "module",

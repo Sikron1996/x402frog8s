@@ -1,4 +1,3 @@
-
 import express from 'express';
 import { buildX402Response } from '../utils/x402Response.js';
 

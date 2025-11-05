@@ -1,1 +1,1 @@
-# x402frog8s full project\nFrontend + Backend ready for Vercel.
+frog8s full project: Base USDC PayAI + Next.js frontend + Express backend.
